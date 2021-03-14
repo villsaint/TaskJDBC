@@ -7,8 +7,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Util util = new Util();
-
         UserServiceImpl userService = new UserServiceImpl();
         userService.createUsersTable();
         userService.saveUser("Ivan", "Ivanov", (byte) 12);
