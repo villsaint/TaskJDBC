@@ -18,7 +18,6 @@ public class Main {
         for (User user : userList) {
             System.out.println(user);
         }
-        System.out.println("Master");
 
         userService.cleanUsersTable();
         userService.dropUsersTable();
