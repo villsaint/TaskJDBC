@@ -1,41 +1,27 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDao;
-import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
-
-
+import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 import java.util.List;
 
 public class Main {
-    private static final String URL = "jdbc:mysql://localhost:3306/firstbd?useSSL=false";
-    private static final String LOGIN = "root";
-    private static final String PASSWORD = "drakedog";
-
     public static void main(String[] args) {
-        driverReg();
-        UserDao userDao = new UserDaoJDBCImpl();
-        userDao.createUsersTable();
-        userDao.saveUser("Ivan", "Ivanov", (byte) 12);
-        userDao.saveUser("Sergey", "Serov", (byte) 23);
-        userDao.saveUser("Petr", "Petrov", (byte) 34);
-        userDao.saveUser("Leo", "Duzev", (byte) 30);
+        Util util = new Util();
 
-        List<User> userList = userDao.getAllUsers();
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.createUsersTable();
+        userService.saveUser("Ivan", "Ivanov", (byte) 12);
+        userService.saveUser("Sergey", "Serov", (byte) 23);
+        userService.saveUser("Petr", "Petrov", (byte) 34);
+        userService.saveUser("Leo", "Duzev", (byte) 30);
 
-        for (User u : userList) {
-            System.out.println(u);
+        List<User> userList = userService.getAllUsers();
+        for (User user : userList) {
+            System.out.println(user);
         }
 
-        userDao.cleanUsersTable();
-        userDao.dropUsersTable();
-    }
-
-    private static void driverReg() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
     }
 }
