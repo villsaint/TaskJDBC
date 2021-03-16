@@ -9,12 +9,21 @@ public class Util {
     private static final String LOGIN = "root";
     private static final String PASSWORD = "drakedog";
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static Util instance;
     private static Connection connection;
+
 
     private Util() {
     }
 
-    public static Connection getConnection() {
+    public static Util getInstance(){
+        if(instance == null){
+            instance = new Util();
+        }
+        return instance;
+    }
+
+    public  Connection getConnection() {
         if (connection == null) {
             try {
                 Class.forName(DRIVER);
