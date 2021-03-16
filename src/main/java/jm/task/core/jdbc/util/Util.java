@@ -14,11 +14,11 @@ public class Util {
     private Util() {
     }
 
-    public static Connection getConnection(){
-        if(connection == null) {
+    public static Connection getConnection() {
+        if (connection == null) {
             try {
                 Class.forName(DRIVER);
-                connection = DriverManager.getConnection(URL,LOGIN,PASSWORD);
+                connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
                 return connection;
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
