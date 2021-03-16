@@ -20,13 +20,19 @@ public class Util {
     public Util() {
     }
 
+
+
+
+
+
     public static Connection getConnection(){
-        try {
-            Class.forName(DRIVER);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
         if(connection == null){
+            try {
+                Class.forName(DRIVER);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             try {
                 connection = DriverManager.getConnection(URL,LOGIN,PASSWORD);
                 return connection;
