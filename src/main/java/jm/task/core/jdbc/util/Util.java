@@ -12,13 +12,13 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
-    private static final String URL = "jdbc:mysql://localhost:3306/firstbd?useSSL=false";
-    private static final String LOGIN = "root";
-    private static final String PASSWORD = "drakedog";
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private  final String URL = "jdbc:mysql://localhost:3306/firstbd?useSSL=false";
+    private  final String LOGIN = "root";
+    private  final String PASSWORD = "drakedog";
+    private  final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static Util instance;
-    private static Connection connection;
-    private static SessionFactory sessionFactory;
+    private  Connection connection;
+    private  SessionFactory sessionFactory;
 
     private Util() {
     }
